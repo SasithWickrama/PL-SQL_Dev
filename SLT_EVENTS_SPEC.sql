@@ -9,11 +9,11 @@ CREATE OR REPLACE PACKAGE CLARITY_ADMIN.SLT_EVENTS IS
    1.0        30/07/2014      011192       1. Created this package.
 ******************************************************************************/
 
----- Dinesh Perera 30-07-2015  ----   
+---- Sasith 30-07-2015  ----   
 procedure FAULT_CREATE_SMS(
         p_faultNumber       IN NUMBER);
 
----- Dinesh Perera 12-08-2015  ----   
+---- Sasith 12-08-2015  ----   
 procedure FAULT_STATUS_CHANGE_SMS(
         p_faultNumber       IN NUMBER,
         p_statusCode        IN VARCHAR,
