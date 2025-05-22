@@ -6,10 +6,10 @@ CREATE OR REPLACE PACKAGE BODY CLARITY_ADMIN.SLT_EVENTS IS
    REVISIONS:
    Ver        Date        Author           Description
    ---------  ----------  ---------------  ------------------------------------
-   1.0        30/07/2015      011192       1. Created this package body.
+   1.0        30/07/2015      Sasith       1. Created this package body.
 ******************************************************************************/
 
----- Dinesh Perera 30-07-2015  ----
+---- Sasith 30-07-2015  ----
 PROCEDURE FAULT_CREATE_SMS (p_faultnumber IN NUMBER)
    IS
       l_prom_lea  problems.PROM_REGN_CODE%TYPE;     
@@ -132,7 +132,7 @@ PROCEDURE FAULT_CREATE_SMS (p_faultnumber IN NUMBER)
 END;
 
 
----- Dinesh Perera 12-08-2015  ----
+---- Sasith 12-08-2015  ----
 PROCEDURE FAULT_STATUS_CHANGE_SMS (p_faultNumber IN NUMBER, p_statusCode IN VARCHAR, p_prouId IN VARCHAR)
    IS
       l_prom_lea  problems.PROM_REGN_CODE%TYPE;     
