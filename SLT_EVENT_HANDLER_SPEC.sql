@@ -16,12 +16,12 @@ is
         p_linkEntityType    in varchar
     );
 
----- Dinesh Perera 27-07-2015  ----   
+---- Sasith 27-07-2015  ----   
 procedure FAULT_LEA_UPDATE(
         p_faultNumber       in number);
 
 
----- Dinesh Perera 28-07-2015  ----   
+---- Sasith  28-07-2015  ----   
 procedure FAULT_ESCALATION_INDEX(
         p_faultNumber       in number);
                     
