@@ -281,6 +281,5 @@ COMMIT;
 
 END PEND_MEGALINE_WO_DATA;
 
----- Dinesh Perera 16-11-2014 -----
----- Edited Dinesh 06-06-2015 ----
+---- Sasith 16-11-2014 -----
 /
