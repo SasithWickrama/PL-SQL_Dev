@@ -1265,6 +1265,5 @@ BEGIN
     
 END PEND_MEGALINE_WO_MAIL;
 
----- Dinesh Perera 11-11-2014 -----
----- Dinesh Edited 08-12-2015 ----
+---- Sasith 11-11-2014 -----
 /
