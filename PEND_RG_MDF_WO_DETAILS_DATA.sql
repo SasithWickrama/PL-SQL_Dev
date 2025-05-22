@@ -220,5 +220,5 @@ COMMIT;
 
 END PEND_RG_MDF_WO_DETAILS_DATA;
 
----- Dinesh Perera 23-10-2014 -----
+---- Sasith 23-10-2014 -----
 /
