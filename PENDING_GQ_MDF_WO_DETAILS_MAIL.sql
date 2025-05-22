@@ -282,10 +282,6 @@ BEGIN
       send_mail(p_to          => 'lakshij@slt.com.lk',
                 p_to_A        => 'sepalirg@slt.com.lk', 
                 p_to_B        => 'smar@slt.com.lk',
-               /* p_to_C        => 'cdinesh@slt.com.lk',
-                p_to_D        => 'cdinesh@slt.com.lk',
-                p_to_E        => 'cdinesh@slt.com.lk',
-                p_to_F        => 'cdinesh@slt.com.lk', */
                 p_from        => 'cdinesh@slt.com.lk',
                 p_subject     => 'GQ OSP Pending WO Details',
                 p_text_msg    => l_body,
@@ -301,5 +297,5 @@ BEGIN
     
 END PEND_GQ_MDF_WO_DETAILS_MAIL;
 
----- Dinesh Perera 12-03-2015 -----
+---- Sasith 12-03-2015 -----
 /
