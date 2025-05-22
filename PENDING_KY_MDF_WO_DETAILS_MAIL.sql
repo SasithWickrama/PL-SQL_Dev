@@ -249,5 +249,5 @@ BEGIN
     
 END PEND_KY_MDF_WO_DETAILS_MAIL;
 
----- Dinesh Perera 06-06-2014 -----
+---- Sasith 06-06-2014 -----
 /
