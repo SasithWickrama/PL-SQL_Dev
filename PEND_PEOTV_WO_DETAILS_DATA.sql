@@ -304,6 +304,5 @@ COMMIT;
 
 END PEND_PEOTV_WO_DETAILS_DATA;
 
----- Dinesh Perera 11-11-2014 -----
----- Edited on 06-05-2015 Dinesh ----
+---- Sasith 11-11-2014 -----
 /
