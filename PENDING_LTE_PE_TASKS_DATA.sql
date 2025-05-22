@@ -1,0 +1,109 @@
+CREATE OR REPLACE PROCEDURE CLARITY_ADMIN.PENDING_LTE_PE_TASKS_DATA AS
+
+
+CURSOR GET_BASE_DATA IS
+                    SELECT
+                       (SELECT DISTINCT SLTA_RH 
+                        FROM SLT_AREAS 
+                        WHERE  SLTA_LEA = PLAE_REQA_ABBREVIATION) AS "REGION",
+                       (SELECT DISTINCT SLTA_HP 
+                        FROM SLT_AREAS 
+                        WHERE  SLTA_LEA = PLAE_REQA_ABBREVIATION) AS "PROVINCE",
+                       (SELECT DISTINCT SLTA_LEA 
+                        FROM SLT_AREAS 
+                        WHERE  SLTA_LEA = PLAE_REQA_ABBREVIATION) AS "RTOM",
+                       (SELECT DISTINCT SLTA_RTOM 
+                        FROM SLT_AREAS 
+                        WHERE  SLTA_LEA = PLAE_REQA_ABBREVIATION) AS "RTOM_DESCRIPTION",
+                        PLAE_NUMBER             "PE_NUMBER",
+                        PLAE_ACTT_ABBREVIATION  "PE_ACTIVITY",
+                        PLAE_CREATEDCENTER      "PE_NATURE",
+                        PLAE_TITLE              "PE_TITLE",
+                        PLAE_OBJECTIVE          "PE_OBJECTIVE",
+                        SEOA_DEFAULTVALUE       "ENB_MGMT_IP",
+                        PLAE_REQA_ABBREVIATION  "PE_AREA",
+                        SERO_ID                 "SO_NUMBER",
+                        SEIT_TIMING             "TASK_SEQ",
+                        SEIT_TASKNAME           "TASK_NAME",
+                        SEIT_WORG_NAME          "TASK_WG",
+                        SEIT_ACTUAL_START_DATE  "ACTUAL_START_DATE"
+                        FROM
+                        SERVICE_ORDERS,
+                        PLANNED_EVENTS,
+                        SERVICE_IMPLEMENTATION_TASKS,
+                        SERVICE_ORDER_ATTRIBUTES
+                        WHERE SERO_OEID = PLAE_NUMBER
+                        AND PLAE_ACTT_ABBREVIATION = 'ENB DEPLOYMENT'
+                        AND PLAE_CREATEDCENTER = 'LTE_PROJECT'
+                        AND PLAE_STATE NOT IN ('CANCELLED','COMPLETED')
+                        AND PLAE_TITLE NOT LIKE ('%TEST%')
+                        AND SERO_STAS_ABBREVIATION NOT IN ('CANCELLED','CLOSED')
+                        AND SERO_ID = SEIT_SERO_ID
+                        AND SEIT_STAS_ABBREVIATION = 'INPROGRESS'
+                        AND SERO_ID = SEOA_SERO_ID
+                        AND SEOA_NAME = 'ENB MGMT IP';
+
+
+GET_BASE_DATA_REC             GET_BASE_DATA%ROWTYPE;
+
+BEGIN
+
+DELETE FROM CLARITY_ADMIN.PENDING_LTE_PE_TASKS;
+
+OPEN GET_BASE_DATA;
+
+LOOP 
+
+FETCH GET_BASE_DATA INTO GET_BASE_DATA_REC ;
+
+EXIT WHEN GET_BASE_DATA%NOTFOUND;
+
+INSERT INTO CLARITY_ADMIN.PENDING_LTE_PE_TASKS
+(
+REGION,
+PROVINCE,
+RTOM,
+RTOM_DESCRIPTION,
+PE_NUMBER,
+PE_ACTIVITY,
+PE_NATURE,
+PE_TITLE,
+PE_OBJECTIVE,
+ENB_MGMT_IP,
+PE_AREA,
+SO_NUMBER,
+TASK_SEQ,
+TASK_NAME,
+TASK_WG,
+ACTUAL_START_DATE
+)
+VALUES
+(
+GET_BASE_DATA_REC.REGION,
+GET_BASE_DATA_REC.PROVINCE,
+GET_BASE_DATA_REC.RTOM,
+GET_BASE_DATA_REC.RTOM_DESCRIPTION,
+GET_BASE_DATA_REC.PE_NUMBER,
+GET_BASE_DATA_REC.PE_ACTIVITY,
+GET_BASE_DATA_REC.PE_NATURE,
+GET_BASE_DATA_REC.PE_TITLE,
+GET_BASE_DATA_REC.PE_OBJECTIVE,
+GET_BASE_DATA_REC.ENB_MGMT_IP,
+GET_BASE_DATA_REC.PE_AREA,
+GET_BASE_DATA_REC.SO_NUMBER,
+GET_BASE_DATA_REC.TASK_SEQ,
+GET_BASE_DATA_REC.TASK_NAME,
+GET_BASE_DATA_REC.TASK_WG,
+GET_BASE_DATA_REC.ACTUAL_START_DATE
+);
+
+END LOOP;
+
+CLOSE GET_BASE_DATA;
+
+COMMIT;
+
+END PENDING_LTE_PE_TASKS_DATA;
+
+---- Dinesh Perera 12-03-2015 -----
+/
