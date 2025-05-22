@@ -6,11 +6,11 @@ CREATE OR REPLACE PACKAGE BODY CLARITY_ADMIN.P_ADMIN_FUNCTIONS_V1 AS
    REVISIONS:
    Ver        Date        Author           Description
    ---------  ----------  ---------------  ------------------------------------
-   1.0        14/07/2015      011192       1. Created this package body.
+   1.0        14/07/2015      Sasith       1. Created this package body.
 ******************************************************************************/
 
 
--- 19-06-2013 Samankula Owitipan
+-- 19-06-2013 Sasith
 -- process function
 PROCEDURE IPTV_TITANIUM_PKG_OPMC_EMAIL (
       p_serv_id            IN     Services.serv_id%TYPE,
@@ -140,7 +140,7 @@ INSERT INTO SERVICE_TASK_COMMENTS ( SETC_SEIT_ID, SETC_ID, SETC_USERID, SETC_TIM
         , p_ret_msg );
 p_implementation_tasks.update_task_status_byid(p_sero_id,0, p_seit_id,'COMPLETED');            
 END IPTV_TITANIUM_PKG_OPMC_EMAIL;
--- 19-06-2013 Samankula Owitipan
+-- 19-06-2013 Sasith
 
 END P_ADMIN_FUNCTIONS_V1;
 /
